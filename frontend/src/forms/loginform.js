@@ -8,7 +8,13 @@ function LoginForm({setUserToken}) {
         username: "",
         password: "",
       });
+
+const [errorMessage, setErrorMessage] = useState("");
     
+function handleClick(){
+        setErrorMessage("Username or Password Invalid!")
+    }
+
       const handleChange = (e) => {
         setFormData({
           ...formData,
@@ -52,6 +58,7 @@ function LoginForm({setUserToken}) {
       >
         <img src={NYCClogo} alt="New York City Council Logo"></img>
         <form onSubmit={handleSubmit}>
+            <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div>
           <label>Username</label>
           <input
             id="username-input"
@@ -72,7 +79,7 @@ function LoginForm({setUserToken}) {
             onChange={handleChange}
             required
           />
-          <button type="submit"> Log In</button>
+          <button type="submit" onClick={handleClick}> Log In</button>
         </form>
       </div>
     </div>
