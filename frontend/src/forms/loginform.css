@@ -60,7 +60,8 @@
     transition-duration: 0.4s;
     background-color: #2F56A6; /* NYCC Blue*/
     color: white;
-    width: 50%;
+    width: 75%;
+    padding: 10px;
     border-radius: 10px;
   }
   
