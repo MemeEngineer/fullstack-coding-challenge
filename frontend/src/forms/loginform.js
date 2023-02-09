@@ -9,11 +9,11 @@ function LoginForm({setUserToken}) {
         password: "",
       });
 
-const [errorMessage, setErrorMessage] = useState("");
+// const [errorMessage, setErrorMessage] = useState("");
     
-function handleClick(){
-        setErrorMessage("Username or Password Invalid!")
-    }
+// function handleClick(){
+//         setErrorMessage("Username or Password Invalid!")
+//     }
 
       const handleChange = (e) => {
         setFormData({
@@ -34,9 +34,10 @@ function handleClick(){
           },
           body: JSON.stringify(userCreds),
         })
-          .then((r) => r.json())
+          .then((response) => response.json())
           .then((user) => {
-            console.log(user);
+            // checks output of response (user token)
+            // console.log(user);
             setFormData({
               username: "",
               password: "",
@@ -58,7 +59,7 @@ function handleClick(){
       >
         <img src={NYCClogo} alt="New York City Council Logo"></img>
         <form onSubmit={handleSubmit}>
-            <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div>
+            {/* <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> */}
           <label>Username</label>
           <input
             id="username-input"
@@ -79,7 +80,7 @@ function handleClick(){
             onChange={handleChange}
             required
           />
-          <button type="submit" onClick={handleClick}> Log In</button>
+          <button type="submit"> Log In</button>
         </form>
       </div>
     </div>

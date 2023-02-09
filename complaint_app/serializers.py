@@ -12,8 +12,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ('id','user','full_name','district','party','borough')
+        #single digit district are not zero padded
 
 class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = Complaint
         fields = ('unique_key','account','opendate','complaint_type','descriptor','zip','borough','city','council_dist','community_board','closedate')
+        #account = district from complaint made
+        #council_dist = district from complaint lives
+        #single digit district are zero padded
