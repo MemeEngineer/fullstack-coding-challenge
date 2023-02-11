@@ -9,9 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     # BONUS Task: Flatten out the User object inside of UserProfile.
+    # primary or foreign key?
     class Meta:
         model = UserProfile
         fields = ('id','user','full_name','district','party','borough')
+        depth = 1
         #single digit district are not zero padded
 
 class ComplaintSerializer(serializers.ModelSerializer):

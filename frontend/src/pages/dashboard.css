@@ -1,3 +1,47 @@
-table, th, td {
-    border: 1px solid;
-  }
+.table{
+    display: table-cell;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+table{
+    display: inline-table;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td{
+    display: table-row;
+    text-align: center;
+    justify-content: space-evenly;
+    border: 10px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+th{
+    display: table-header-group;
+    text-align: center;
+    justify-content: center;
+    border: 10px solid black;
+    border-collapse: collapse;
+}
+tr{
+    display: table-row;
+    text-align: center;
+    justify-content: center; 
+    border: 10px solid black;
+    border-collapse: collapse;
+}
+
+tb{
+    display: table-row;
+    text-align: center;
+    justify-content: center; 
+    border: 10px solid black;
+    border-collapse: collapse;
+}
+
