@@ -100,9 +100,11 @@ function Dashboard({ userToken, setUserToken }) {
       >
         <table className="table" style={{ border: "1px solid black", borderCollapse: "collapse" }}>
           <thead>
+            <tr>
             <th>Open Cases</th>
             <th>Closed Cases</th>
             <th>Top Complaint</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
