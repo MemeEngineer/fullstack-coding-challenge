@@ -5,6 +5,7 @@ function Dashboard({ userToken, setUserToken }) {
   const [openCases, setOpenCases]           = useState([]);
   const [closeCases, setCloseCases]         = useState([]);
   const [topComplaints, setTopComplaint]    = useState([]);
+
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/complaints/", {
       method: "GET",
@@ -58,12 +59,15 @@ function Dashboard({ userToken, setUserToken }) {
         .then((response) => response.json())
         .then((topcomplaint) => {
           // checks output of response (user complaints with top complaint)
-          // console.log(closeDate);
+          // console.log(topcomplaint);
           setTopComplaint(topcomplaint);
   });
       
   }, [userToken]);
- //Monkey wrench frequency counter does not work but the idea was there
+
+ //Monkey patch: frequency counter does not work but the idea was there
+ //need input to take in a string 
+ //this was to deal with an arrray of int
   // function countComplaint(arr){
   //   const count={};
   //   for(let i=0; i < arr.length; i++){
@@ -76,16 +80,15 @@ function Dashboard({ userToken, setUserToken }) {
   // console.log(countComplaint(arr))
   // console.log(arr)
 
-console.log(topComplaints)
-
-
-
-
+  //returns an array of top complaints and in clientside return the most occuring complaint in their district
+  const topCom = topComplaints.map((topComplaint) => { 
+    return(
+   [topComplaint.complaint_type]
+    )
+  })
+// console.log(topCom)
   return (
     <div className="table">
-       <p>{openCases.length} OpenCases</p> 
-       <p>{closeCases.length} CloseCases</p>
-       {/* <p>{topComplaints.complaint_type[0]} Top Complaints</p> */}
       <div
         style={{
           display: "flex",
@@ -95,6 +98,20 @@ console.log(topComplaints)
           marginTop: "50px",
         }}
       >
+        <table className="table" style={{ border: "1px solid black", borderCollapse: "collapse" }}>
+          <thead>
+            <th>Open Cases</th>
+            <th>Closed Cases</th>
+            <th>Top Complaint</th>
+          </thead>
+          <tbody>
+            <tr>
+            <td>{openCases.length}</td>
+            <td>{closeCases.length}</td>
+            <td>{topCom[0]}</td>
+            </tr>
+          </tbody>
+        </table>
         <table
           key={userComplaints.uniquekey}
           style={{ border: "1px solid black", borderCollapse: "collapse" }}

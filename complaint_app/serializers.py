@@ -15,7 +15,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ('id','user','full_name','district','party','borough')
         depth = 1
         #single digit district are not zero padded
-
+    # print(UserProfile.objects.all())
 class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = Complaint
