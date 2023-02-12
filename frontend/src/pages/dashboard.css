@@ -14,13 +14,25 @@
     width: 80%;  
     
 }
-/* table tr:nth-child(odd) td {
-    background-color: red;
+table tr:nth-child(odd) td {
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 2px;
 }
 table tr:nth-child(even) td{
-    background-color: blue;
-} */
-
+    background-color: #4C8BF5;
+    color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    font-weight: bold;
+    padding: 2px;
+}
 thead th{
     border-width: 2px;
     border-style: solid;
@@ -30,7 +42,7 @@ thead th{
     font-weight: bold;
 }
 
- tbody td:nth-child(even) {
+ /* tbody td:nth-child(even) {
     border-width: 2px;
     border-style: solid;
     border-color: black;
@@ -47,7 +59,7 @@ tbody tr:nth-child(odd){
     border-color: black;
     font-weight: bold;
     padding: 2px;
-  } 
+  }  */
 
  /* :nth-child() {
    background-color: blue;

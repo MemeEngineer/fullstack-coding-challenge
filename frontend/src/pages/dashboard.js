@@ -123,10 +123,9 @@ function Dashboard({ userToken, setUserToken}){
 
             </tr>
           </thead>
-          
+          <tbody>
             {userComplaints.map((complaint) => {
               return (
-                <tbody>
                 <tr>
                   <td>{complaint.unique_key}</td>
                   <td>{complaint.account}</td>
@@ -140,10 +139,10 @@ function Dashboard({ userToken, setUserToken}){
                   <td>{complaint.opendate}</td>
                   <td>{complaint.closedate}</td>
                 </tr>
-                </tbody>
+                
               );
             })}
-      
+      </tbody>
         </table>
       
     </div>
