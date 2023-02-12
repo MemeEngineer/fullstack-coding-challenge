@@ -97,3 +97,18 @@ class TopComplaintTypeViewSet(viewsets.ModelViewSet):
     topComplaints= Complaint.objects.all().filter(account= zeroPadding(userProfile.district)).values('complaint_type').annotate(complaint_type__count= Count('complaint_type')).order_by('-complaint_type__count')[:3]
     serializer = ComplaintSerializer(topComplaints, many=True)
     return Response(serializer.data)
+
+class ConstituentsViewSet(viewsets.ModelViewSet):
+  http_method_names=['get']
+  serializer_class = UserProfileSerializer
+  serializer_class = ComplaintSerializer
+  def list(self, request):
+    #get complaints by district of the user
+
+    #pull user
+    userProfile = UserProfile.objects.get(user=request.user)
+
+    #filter complaints by council_dist of the user
+    constituents = Complaint.objects.all().filter(council_dist= zeroPadding(userProfile.district))
+    serializer = ComplaintSerializer(constituents, many=True)
+    return Response(serializer.data)

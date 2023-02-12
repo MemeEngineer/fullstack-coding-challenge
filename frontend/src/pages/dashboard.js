@@ -5,7 +5,7 @@ function Dashboard({ userToken, setUserToken,}){
   const [openCases, setOpenCases]           = useState([]);
   const [closeCases, setCloseCases]         = useState([]);
   const [topComplaints, setTopComplaint]    = useState([]);
-
+  const [constituents, setConstituents]     = useState([]);
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/complaints/", {
       method: "GET",
@@ -62,7 +62,7 @@ function Dashboard({ userToken, setUserToken,}){
           // console.log(topcomplaint);
           setTopComplaint(topcomplaint);
   });
-      
+
   }, [userToken]);  
  //Monkey patch: frequency counter does not work but the idea was there
  //need input to take in a string 
@@ -93,10 +93,28 @@ function handleClick(){
   setUserToken(null)
 }
 
+ function handleUpdate(){
+  fetch("http://127.0.0.1:8000/api/complaints/constituents/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${userToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((constituent) => {
+        // checks output of response (constituent complaints)
+        console.log(constituent);
+        setConstituents(constituent);
+      });
+      setUserComplaints(constituents)
+}
+
   return (
     
     <div className= "centerpage">
-      <button className="logout" onClick={()=>handleClick()}>Log Out</button>
+      <button className="logout" onClick={()=> handleClick()}>Log Out</button>
+      <button className="complaint" onClick={()=> handleUpdate()}>Complaints by My Constituents</button>
         <table className= "table">
           <thead>
             <tr>

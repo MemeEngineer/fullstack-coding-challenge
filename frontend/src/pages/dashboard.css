@@ -16,6 +16,17 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.complaint{
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.04s;
+    background-color: #FF6600; /* NYC Flag Orange*/
+    color: white;
+    width: 10%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 .table {
     display: inline-table;
     text-align: center;
