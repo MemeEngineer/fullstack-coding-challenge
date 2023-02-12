@@ -92,7 +92,7 @@ function Dashboard({ userToken, setUserToken}){
   return (
     <div className= "centerpage">
       
-        <table class= "table">
+        <table className= "table">
           <thead>
             <tr>
             <th>Open Cases</th>
@@ -117,7 +117,7 @@ function Dashboard({ userToken, setUserToken}){
             <tr>
               {theading.map((thead) => {
                 return(
-                  <th>{thead}</th>
+                  <th key={thead}>{thead}</th>
                 )
               })}
 
@@ -126,7 +126,7 @@ function Dashboard({ userToken, setUserToken}){
           <tbody>
             {userComplaints.map((complaint) => {
               return (
-                <tr>
+                <tr key={complaint.unique_key}>
                   <td>{complaint.unique_key}</td>
                   <td>{complaint.account}</td>
                   <td>{complaint.council_dist}</td>
