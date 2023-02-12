@@ -1,28 +1,59 @@
-.table{
-    display: table-cell;
+.centerpage{
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction: column;
+    margin-top: 50px;   
 }
-
-table{
+.table {
     display: inline-table;
     text-align: center;
     justify-content: center;
-    border: 1px solid black;
+    border: 5px solid black;
     border-collapse: collapse;
+    width: 80%;  
+    
+}
+/* table tr:nth-child(odd) td {
+    background-color: red;
+}
+table tr:nth-child(even) td{
+    background-color: blue;
+} */
+
+thead th{
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: #2F56A6; /* NYCC BLUE*/
+    color: white;
+    font-weight: bold;
 }
 
-td{
-    display: table-row;
-    text-align: center;
-    justify-content: space-evenly;
-    border: 10px solid black;
-    border-collapse: collapse;
-    padding: 5px;
-}
+ tbody td:nth-child(even) {
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 2px;
+} 
+tbody tr:nth-child(odd){
+    background-color: #4C8BF5;
+    color: #fff;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    font-weight: bold;
+    padding: 2px;
+  } 
 
-th{
+ /* :nth-child() {
+   background-color: blue;
+}  */
+
+/* th{
     display: table-header-group;
     text-align: center;
     justify-content: center;
@@ -43,5 +74,5 @@ tb{
     justify-content: center; 
     border: 10px solid black;
     border-collapse: collapse;
-}
+}   */
 

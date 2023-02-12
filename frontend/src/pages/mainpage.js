@@ -2,10 +2,9 @@ import React from "react";
 // import { BrowserRouter as Router } from "react-router-dom";
 import Dashboard from "./dashboard.js";
 
-function mainpage({
-  userToken,
-  setUserToken,
-}) {
+function Mainpage({userToken,setUserToken}){
+
+
   return (
     <Dashboard  
       userToken={userToken}
@@ -14,4 +13,4 @@ function mainpage({
   );
 }
 
-export default mainpage;
+export default Mainpage;

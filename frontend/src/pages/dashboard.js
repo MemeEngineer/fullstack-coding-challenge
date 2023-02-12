@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-
-function Dashboard({ userToken, setUserToken }) {
+import React,{useState, useEffect} from "react";
+import "./dashboard.css";
+function Dashboard({ userToken, setUserToken}){
   const [userComplaints, setUserComplaints] = useState([]);
   const [openCases, setOpenCases]           = useState([]);
   const [closeCases, setCloseCases]         = useState([]);
@@ -63,8 +63,7 @@ function Dashboard({ userToken, setUserToken }) {
           setTopComplaint(topcomplaint);
   });
       
-  }, [userToken]);
-
+  }, [userToken]);  
  //Monkey patch: frequency counter does not work but the idea was there
  //need input to take in a string 
  //this was to deal with an arrray of int
@@ -86,19 +85,14 @@ function Dashboard({ userToken, setUserToken }) {
    [topComplaint.complaint_type]
     )
   })
+
+  const theading= ["Key", "Account", "Council","Borough", "City", "Zip Code", "Community Board", "Complaint Type", "Descriptor", "Open Date","Close Date"]
 // console.log(topCom)
+
   return (
-    <div className="table">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          marginTop: "50px",
-        }}
-      >
-        <table className="table" style={{ border: "1px solid black", borderCollapse: "collapse" }}>
+    <div className= "centerpage">
+      
+        <table class= "table">
           <thead>
             <tr>
             <th>Open Cases</th>
@@ -114,33 +108,25 @@ function Dashboard({ userToken, setUserToken }) {
             </tr>
           </tbody>
         </table>
+        <br></br>
         <table
           key={userComplaints.uniquekey}
-          style={{ border: "1px solid black", borderCollapse: "collapse" }}
+          className="table"  
         >
-          <thead style={{ border: "1px solid black", borderCollapse: "collapse" }}>
-            <tr
-              style={{ border: "1px solid black", borderCollapse: "collapse" }}
-            >
-              <th>Key</th>
-              <th>Account</th>
-              <th>Council</th>
-              <th>Borough</th>
-              <th>City</th>
-              <th>Zip Code</th>
-              <th>Community Board</th>
-              <th>Complaint Type</th>
-              <th>Descriptor</th>
-              <th>Open Date</th>
-              <th>Close Date</th>
+          <thead>
+            <tr>
+              {theading.map((thead) => {
+                return(
+                  <th>{thead}</th>
+                )
+              })}
+
             </tr>
           </thead>
           
             {userComplaints.map((complaint) => {
               return (
-                <tbody
-                style={{ border: "1px solid black", borderCollapse: "collapse" , padding:"10px",justifyContent:"space-evenly", alignContent:"center"}}
-              >
+                <tbody>
                 <tr>
                   <td>{complaint.unique_key}</td>
                   <td>{complaint.account}</td>
@@ -159,7 +145,7 @@ function Dashboard({ userToken, setUserToken }) {
             })}
       
         </table>
-      </div>
+      
     </div>
   );
 }
