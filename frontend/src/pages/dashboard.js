@@ -104,7 +104,7 @@ function handleClick(){
       .then((response) => response.json())
       .then((constituent) => {
         // checks output of response (constituent complaints)
-        console.log(constituent);
+        //console.log(constituent);
         setConstituents(constituent);
       });
       setUserComplaints(constituents)
