@@ -1,19 +1,16 @@
 import React, {useState} from "react";
-import NYCClogo from "./nycc-wordmark-blue.png";
+import NYCClogo from "../assets/nycc-wordmark-blue.png";
 import "./loginform.css";
 
 
-function LoginForm({setUserToken}) {
+function LoginForm({userToken,setUserToken}) {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
       });
 
-// const [errorMessage, setErrorMessage] = useState("");
+const [errorMessage, setErrorMessage] = useState("");
     
-// function handleClick(){
-//         setErrorMessage("Username or Password Invalid!")
-//     }
 
       const handleChange = (e) => {
         setFormData({
@@ -34,7 +31,15 @@ function LoginForm({setUserToken}) {
           },
           body: JSON.stringify(userCreds),
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if(response.ok){
+            return response.json();
+            }else{
+              setErrorMessage("Username or Password Invalid!")
+              Promise.reject(response)
+             }
+            }
+          )
           .then((user) => {
             // checks output of response (user token)
             // console.log(user);
@@ -43,7 +48,8 @@ function LoginForm({setUserToken}) {
               password: "",
             });
              setUserToken(user.token)
-          });
+          })
+          .catch((response)=> {console.log("Username or Password Invalid!")})
       }
 
 
@@ -59,7 +65,7 @@ function LoginForm({setUserToken}) {
       >
         <img src={NYCClogo} alt="New York City Council Logo"></img>
         <form onSubmit={handleSubmit}>
-            {/* <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> */}
+            <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> 
           <label>Username</label>
           <input
             id="username-input"
@@ -80,7 +86,7 @@ function LoginForm({setUserToken}) {
             onChange={handleChange}
             required
           />
-          <button type="submit"> Log In</button>
+          <button type="submit" className="login"> Log In</button>
         </form>
       </div>
     </div>

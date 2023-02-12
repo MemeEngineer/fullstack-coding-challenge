@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import "./dashboard.css";
-function Dashboard({ userToken, setUserToken}){
+function Dashboard({ userToken, setUserToken,}){
   const [userComplaints, setUserComplaints] = useState([]);
   const [openCases, setOpenCases]           = useState([]);
   const [closeCases, setCloseCases]         = useState([]);
@@ -89,9 +89,14 @@ function Dashboard({ userToken, setUserToken}){
   const theading= ["Key", "Account", "Council","Borough", "City", "Zip Code", "Community Board", "Complaint Type", "Descriptor", "Open Date","Close Date"]
 // console.log(topCom)
 
+function handleClick(){
+  setUserToken(null)
+}
+
   return (
+    
     <div className= "centerpage">
-      
+      <button className="logout" onClick={()=>handleClick()}>Log Out</button>
         <table className= "table">
           <thead>
             <tr>
@@ -144,8 +149,9 @@ function Dashboard({ userToken, setUserToken}){
             })}
       </tbody>
         </table>
-      
-    </div>
+  
+        </div>
+
   );
 }
 
