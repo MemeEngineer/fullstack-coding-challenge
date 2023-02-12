@@ -110,11 +110,32 @@ function handleClick(){
       setUserComplaints(constituents)
 }
 
+function handleReturn(){
+  fetch("http://127.0.0.1:8000/api/complaints/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${userToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((complaints) => {
+        // checks output of response (user complaints)
+        //console.log(complaints);
+        setUserComplaints(complaints);
+      });
+      setUserComplaints(userComplaints)
+}
+
   return (
-    
-    <div className= "centerpage">
-      <button className="logout" onClick={()=> handleClick()}>Log Out</button>
+    <div>
+    <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>
+       <button className="logout" onClick={()=> handleClick()}>Log Out</button>
       <button className="complaint" onClick={()=> handleUpdate()}>Complaints by My Constituents</button>
+      <button className="complaint" onClick={()=> handleReturn()}> Complaints </button>
+    </div>
+    <div className= "centerpage">
+      
         <table className= "table">
           <thead>
             <tr>
@@ -168,6 +189,7 @@ function handleClick(){
       </tbody>
         </table>
   
+        </div>
         </div>
 
   );
