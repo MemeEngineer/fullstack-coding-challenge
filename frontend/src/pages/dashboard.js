@@ -6,6 +6,7 @@ function Dashboard({ userToken, setUserToken,}){
   const [closeCases, setCloseCases]         = useState([]);
   const [topComplaints, setTopComplaint]    = useState([]);
   const [constituents, setConstituents]     = useState([]);
+  
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/complaints/", {
       method: "GET",
@@ -62,7 +63,7 @@ function Dashboard({ userToken, setUserToken,}){
           // console.log(topcomplaint);
           setTopComplaint(topcomplaint);
   });
-
+  
   }, [userToken]);  
  //Monkey patch: frequency counter does not work but the idea was there
  //need input to take in a string 
@@ -85,15 +86,21 @@ function Dashboard({ userToken, setUserToken,}){
    [topComplaint.complaint_type]
     )
   })
-
-  const theading= ["Key", "Account", "Council","Borough", "City", "Zip Code", "Community Board", "Complaint Type", "Descriptor", "Open Date","Close Date"]
 // console.log(topCom)
 
-function handleClick(){
+//refactoring the table headers into array
+  const theading= ["Key", "Account", "Council","Borough", "City", "Zip Code", "Community Board", "Complaint Type", "Descriptor", "Open Date","Close Date"]
+
+
+
+//sends null to usertoken logging user out
+function handleLogout(){
   setUserToken(null)
 }
 
- function handleUpdate(){
+
+//fetchs from new api route to update table with complaints in the users council district
+function handleUpdate(){
   fetch("http://127.0.0.1:8000/api/complaints/constituents/", {
       method: "GET",
       headers: {
@@ -106,33 +113,35 @@ function handleClick(){
         // checks output of response (constituent complaints)
         //console.log(constituent);
         setConstituents(constituent);
-      });
+      })
       setUserComplaints(constituents)
 }
 
-function handleReturn(){
-  fetch("http://127.0.0.1:8000/api/complaints/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${userToken}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((complaints) => {
-        // checks output of response (user complaints)
-        //console.log(complaints);
-        setUserComplaints(complaints);
-      });
-      setUserComplaints(userComplaints)
-}
+//fetches back the original complaints made in the users account district
+  function handleReturn(){
+      fetch("http://127.0.0.1:8000/api/complaints/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${userToken}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((complaints) => {
+            // checks output of response (user complaints)
+            //console.log(complaints);
+            setUserComplaints(complaints);
+          });
+          setUserComplaints(userComplaints)
+    }
+
 
   return (
     <div>
     <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>
-       <button className="logout" onClick={()=> handleClick()}>Log Out</button>
-      <button className="complaint" onClick={()=> handleUpdate()}>Complaints by My Constituents</button>
-      <button className="complaint" onClick={()=> handleReturn()}> Complaints </button>
+       <button className="logout" onClick={handleLogout}>Log Out</button>
+      <button className="complaint" onClick={handleUpdate}>Complaints by My Constituents</button>
+      <button className="complaint" onClick={handleReturn}> Complaints </button>
     </div>
     <div className= "centerpage">
       

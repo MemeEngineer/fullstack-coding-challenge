@@ -9,7 +9,7 @@ function LoginForm({userToken,setUserToken}) {
         password: "",
       });
 
-const [errorMessage, setErrorMessage] = useState("");
+ const [errorMessage, setErrorMessage] = useState("");
     
 
       const handleChange = (e) => {
@@ -20,6 +20,7 @@ const [errorMessage, setErrorMessage] = useState("");
       };
                                         
       function handleSubmit(e) {
+        
         e.preventDefault();
 
          const userCreds = { ...formData };
@@ -46,10 +47,10 @@ const [errorMessage, setErrorMessage] = useState("");
             setFormData({
               username: "",
               password: "",
-            });
-             setUserToken(user.token)
+            })
+            setUserToken(user.token)
           })
-          .catch((response)=> {console.log("Username or Password Invalid!")})
+         .catch((response)=> {console.log("Username or Password Invalid!")})
       }
 
 
@@ -65,7 +66,7 @@ const [errorMessage, setErrorMessage] = useState("");
       >
         <img src={NYCClogo} alt="New York City Council Logo"></img>
         <form onSubmit={handleSubmit}>
-            <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> 
+             <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> 
           <label>Username</label>
           <input
             id="username-input"
