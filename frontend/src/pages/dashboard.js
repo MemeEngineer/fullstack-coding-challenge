@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import "./dashboard.css";
-function Dashboard({ userToken, setUserToken,}){
+function Dashboard({ userToken, setUserToken, islogin, setLogin}){
   const [userComplaints, setUserComplaints] = useState([]);
   const [openCases, setOpenCases]           = useState([]);
   const [closeCases, setCloseCases]         = useState([]);
@@ -95,7 +95,8 @@ function Dashboard({ userToken, setUserToken,}){
 
 //sends null to usertoken logging user out
 function handleLogout(){
-  setUserToken(null)
+  setUserToken()
+  setLogin(false)
 }
 
 

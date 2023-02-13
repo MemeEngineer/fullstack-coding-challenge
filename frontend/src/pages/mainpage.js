@@ -4,7 +4,7 @@ import Dashboard from "./dashboard.js";
 import Header from "./header.js";
 import Footer from "./footer.js";
 
-function Mainpage({userToken,setUserToken}){
+function Mainpage({userToken,setUserToken, islogin, setLogin}){
 
 
   return (
@@ -13,6 +13,8 @@ function Mainpage({userToken,setUserToken}){
       <Dashboard  
       userToken={userToken}
       setUserToken={setUserToken}
+      islogin={islogin} 
+      setLogin={setLogin}
       />
       <Footer/>
     </div>

@@ -3,7 +3,7 @@ import NYCClogo from "../assets/nycc-wordmark-blue.png";
 import "./loginform.css";
 
 
-function LoginForm({userToken,setUserToken}) {
+function LoginForm({userToken,setUserToken, islogin, setLogin}) {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -49,10 +49,11 @@ function LoginForm({userToken,setUserToken}) {
               password: "",
             })
             setUserToken(user.token)
+            setLogin(true)
           })
          .catch((response)=> {console.log("Username or Password Invalid!")})
       }
-
+      
 
   return (
     <div className="center-screen">
