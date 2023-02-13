@@ -4,7 +4,7 @@ import Loginform from "./forms/loginform.js";
 import Mainpage from "./pages/mainpage.js";
 
 function App() {
-  const [userToken, setUserToken] = useState({});
+  const [userToken, setUserToken] = useState("");
   const [islogin, setLogin]       = useState(false);
   
   return (

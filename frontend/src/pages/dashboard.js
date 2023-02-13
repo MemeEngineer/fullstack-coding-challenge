@@ -6,8 +6,10 @@ function Dashboard({ userToken, setUserToken, islogin, setLogin}){
   const [closeCases, setCloseCases]         = useState([]);
   const [topComplaints, setTopComplaint]    = useState([]);
   const [constituents, setConstituents]     = useState([]);
-  
+  const [onUpdate, setOnUpdate]             = useState(false);
+  const [onReturn, setOnReturn]             = useState(false);
   useEffect(() => {
+    
     fetch("http://127.0.0.1:8000/api/complaints/", {
       method: "GET",
       headers: {
@@ -102,6 +104,15 @@ function handleLogout(){
 
 //fetchs from new api route to update table with complaints in the users council district
 function handleUpdate(){
+ if(onUpdate === false){
+  return setOnUpdate(true)
+ }else{
+return (
+  setOnUpdate(false) 
+    )
+  }
+}
+useEffect(() => {
   fetch("http://127.0.0.1:8000/api/complaints/constituents/", {
       method: "GET",
       headers: {
@@ -116,10 +127,19 @@ function handleUpdate(){
         setConstituents(constituent);
       })
       setUserComplaints(constituents)
-}
+}, [onUpdate]);
 
-//fetches back the original complaints made in the users account district
+// fetches back the original complaints made in the users account district
   function handleReturn(){
+    if(onReturn === false){
+      return setOnReturn(true)
+     }else{
+    return setOnReturn(false)
+     }
+    }
+    
+
+    useEffect(() => {
       fetch("http://127.0.0.1:8000/api/complaints/", {
           method: "GET",
           headers: {
@@ -134,15 +154,14 @@ function handleUpdate(){
             setUserComplaints(complaints);
           });
           setUserComplaints(userComplaints)
-    }
-
+    }, [onReturn]);
 
   return (
     <div>
     <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>
-       <button className="logout" onClick={handleLogout}>Log Out</button>
-      <button className="complaint" onClick={handleUpdate}>Complaints by My Constituents</button>
-      <button className="complaint" onClick={handleReturn}> Complaints </button>
+       <button className="logout"  onClick={handleLogout}>Log Out</button>
+      <button className="complaint"  onClick={handleUpdate}>Complaints by My Constituents</button>
+      <button className="complaint"  onClick={handleReturn}> Complaints </button>
     </div>
     <div className= "centerpage">
       

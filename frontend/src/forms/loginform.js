@@ -13,6 +13,7 @@ function LoginForm({userToken,setUserToken, islogin, setLogin}) {
     
 
       const handleChange = (e) => {
+        
         setFormData({
           ...formData,
           [e.target.name]: e.target.value,
@@ -20,7 +21,6 @@ function LoginForm({userToken,setUserToken, islogin, setLogin}) {
       };
                                         
       function handleSubmit(e) {
-        
         e.preventDefault();
 
          const userCreds = { ...formData };
@@ -66,7 +66,7 @@ function LoginForm({userToken,setUserToken, islogin, setLogin}) {
         }}
       >
         <img src={NYCClogo} alt="New York City Council Logo"></img>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e)=>handleSubmit(e)}>
              <div style={{color:"red", fontWeight:"bold"}}>{errorMessage}</div> 
           <label>Username</label>
           <input
