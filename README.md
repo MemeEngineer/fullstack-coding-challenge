@@ -19,7 +19,7 @@
 
 ✔️ Elegant Minimalist Styling
 
-# Links I Used
+# Links I Used (NOT all but MOST -- GOOGLE every problem encounter & use stackoverflow)
 #### setting python environment
 https://learn.microsoft.com/en-us/windows/python/web-frameworks
 use python3 & pip3 in the command line
