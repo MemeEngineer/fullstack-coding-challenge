@@ -1,4 +1,4 @@
-# fullstack-coding-challenge
+# JOHNNNY's fullstack-coding-challenge
 
 
 
@@ -16,6 +16,8 @@
 ✔️ Complaints by Constituents
 
 ✔️ Pie and Bar graphs 
+
+✔️ Elegant Minimalist Styling
 
 # Links I Used
 #### setting python environment
@@ -44,6 +46,7 @@ https://www.youtube.com/watch?v=rHux0gMZ3Eg&list=RDCMUCWv7vMbMWH4-V0ZXdmDpPBA&st
 
 #### following-along guide to token-auth
 https://simpleisbetterthancomplex.com/tutorial/2018/11/22/how-to-implement-token-authentication-using-django-rest-framework.html
+
 #### serializer
 https://www.django-rest-framework.org/api-guide/serializers/#specifying-nested-serialization
 https://www.django-rest-framework.org/api-guide/serializers/#dealing-with-multiple-objects
@@ -52,17 +55,24 @@ https://www.django-rest-framework.org/api-guide/serializers/#dealing-with-multip
 https://stackoverflow.com/questions/33373966/django-rest-framework-detail-not-found
 https://stackoverflow.com/questions/55536646/how-to-fix-page-not-found-404-error-django-tried-these-url-patterns-the
 ![image](https://user-images.githubusercontent.com/90629466/218418820-d4b0e32b-f55b-4353-9da0-eca3b646aecc.png)
+
 #### filtering in Django
 https://www.django-rest-framework.org/api-guide/filtering/
 https://docs.djangoproject.com/en/4.1/topics/db/queries/
 https://stackoverflow.com/questions/65138667/get-highest-3-count-records-from-the-query-in-django
+
 #### table styling
 https://stackoverflow.com/questions/3084261/alternate-table-row-color-using-css
+![image](https://user-images.githubusercontent.com/90629466/218421241-09cc1441-1b88-4017-8844-78b99a9676b7.png)
+
 #### error handling
 https://stackoverflow.com/questions/38235715/fetch-reject-promise-and-catch-the-error-if-status-is-not-ok
+
 #### charts
 https://recharts.org/en-US/guide
+
 #### python3 online ide for testing code
 https://www.jdoodle.com/python3-programming-online/
+
 #### javascript online ide
 https://www.programiz.com/javascript/online-compiler/
