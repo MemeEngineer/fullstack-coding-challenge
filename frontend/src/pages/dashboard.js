@@ -1,5 +1,14 @@
 import React,{useState, useEffect} from "react";
 import "./dashboard.css";
+import { PieChart, Pie, Cell,  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend } from "recharts";
+// import Bar from "../components/bar.js";
+
 function Dashboard({ userToken, setUserToken, islogin, setLogin}){
   const [userComplaints, setUserComplaints] = useState([]);
   const [openCases, setOpenCases]           = useState([]);
@@ -156,8 +165,92 @@ useEffect(() => {
           setUserComplaints(userComplaints)
     }, [onReturn]);
 
+//PIE CHART STUFF
+    const datafrompie = [
+      { name: 'Open Cases', value: openCases.length },
+      { name: 'Closed Cases', value: closeCases.length },
+    ];
+
+    const COLORS = ['#FF0000', '#2F56A6',];
+
+    const RADIAN = Math.PI / 180;
+      const renderCustomizedLabel = ({
+        cx,
+        cy,
+        midAngle,
+        innerRadius,
+        outerRadius,
+        percent,
+        index,
+        name
+      }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+      
+        return (
+          <text
+            x={x}
+            y={y}
+            fill="black"
+            textAnchor={x > cx ? "start" : "end"}
+            dominantBaseline="central"
+          >
+            {`${(percent * 100).toFixed(0)}%`}
+            {name}
+          </text>
+        );
+      };
+
+//BAR CHART STUFF
+      const datafrombar = [
+        {
+          name: "Cases",
+          Closed: closeCases.length,
+          Open: openCases.length,
+          Total: userComplaints.length,
+        },
+       
+      ];
   return (
     <div>
+      <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>
+      <PieChart width={400} height={400}>
+                <Pie
+                  data={datafrompie}
+                  cx={200}
+                  cy={200}
+                  labelLine={false}
+                  label={renderCustomizedLabel}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {datafrompie.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} nameKey="name" />
+                  ))}
+                </Pie>
+              </PieChart>
+              <BarChart
+      width={500}
+      height={300}
+      data={datafrombar}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="Closed" fill="#2F56A6" />
+      <Bar dataKey="Open" fill="#FF0000" />
+    </BarChart>
+    </div>
     <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>
        <button className="logout"  onClick={handleLogout}>Log Out</button>
       <button className="complaint"  onClick={handleUpdate}>Complaints by My Constituents</button>
