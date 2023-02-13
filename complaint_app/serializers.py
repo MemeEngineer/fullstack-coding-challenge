@@ -6,16 +6,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id','username', 'first_name','last_name')
-
+        # print(User.objects.all())
 class UserProfileSerializer(serializers.ModelSerializer):
     # BONUS Task: Flatten out the User object inside of UserProfile.
-    # primary or foreign key?
     class Meta:
         model = UserProfile
         fields = ('id','user','full_name','district','party','borough')
-        depth = 1
+        # depth = 1
+        #primary key or foreign key
         #single digit district are not zero padded
-    # print(UserProfile.objects.all())
+       
+        
 class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = Complaint
