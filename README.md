@@ -1,6 +1,7 @@
 # JOHNNNY's fullstack-coding-challenge
 
-
+Username: bperkins
+Password: perkins-9
 
 ![login](https://user-images.githubusercontent.com/90629466/218417096-a7801834-4e6a-4e7d-b512-c8214a900913.PNG)
 ![NYCC Code Challenge](https://user-images.githubusercontent.com/90629466/218417120-1fbd53b2-aa44-4dff-b63b-519c1dff0338.gif)
@@ -76,3 +77,4 @@ https://www.jdoodle.com/python3-programming-online/
 
 #### javascript online ide
 https://www.programiz.com/javascript/online-compiler/
+
