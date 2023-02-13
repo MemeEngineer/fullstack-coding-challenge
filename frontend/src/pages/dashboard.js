@@ -1,12 +1,6 @@
 import React,{useState, useEffect} from "react";
 import "./dashboard.css";
-import { PieChart, Pie, Cell,  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend } from "recharts";
+import { PieChart, Pie, Cell,  BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend } from "recharts";
 // import Bar from "../components/bar.js";
 
 function Dashboard({ userToken, setUserToken, islogin, setLogin}){
@@ -212,6 +206,7 @@ useEffect(() => {
         },
        
       ];
+      
   return (
     <div>
       <div style={{display:"flex", justifyContent: "center",flexWrap:"wrap"}}>

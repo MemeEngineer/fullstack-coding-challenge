@@ -81,7 +81,7 @@ function LoginForm({userToken,setUserToken, islogin, setLogin}) {
           <label>Password</label>
           <input
             id="password-input"
-            type="text"
+            type="password"
             name="password"
             placeholder="Input Password"
             value={formData.password}
